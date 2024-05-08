@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container mt-5 p-3 shadow text-center align-items-center">
+        <h2>Temperature Converter</h2>
+
+        <form id="tempForm">
+            <label for="temperature">Enter Temperature:</label>
+            <input type="number" id="temperature" name="temperature" step="any" required>
+            <select id="unit" name="unit">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
+            <button class="btn btn-success  d-block m-1" type="submit">Convert</button>
+        </form>
+
+        <div  id="result"></div>
+
+    </div>
+
+
+    <script>
+        document.getElementById("tempForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var temperature = parseFloat(document.getElementById("temperature").value);
+            var unit = document.getElementById("unit").value;
+
+            if (unit === "celsius") {
+                document.getElementById("result").innerText = temperature + " Celsius";
+            } else if (unit === "fahrenheit") {
+                var celsius = (temperature - 32) * 5 / 9;
+                document.getElementById("result").innerText = celsius + " Celsius";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
